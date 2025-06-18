@@ -91,6 +91,10 @@ class Invoice(models.Model):
     order: Order = models.OneToOneField(Order, on_delete=models.CASCADE, verbose_name="Замовлення")
     created_at: datetime = models.DateTimeField(auto_now_add=True, verbose_name="Дата накладної")
 
+    @property
+    def price(self) -> Decimal:
+        return self.order.product.price_at_order
+
     def __str__(self) -> str:
         return f"Накладна замовлення №{self.order.id}"
 

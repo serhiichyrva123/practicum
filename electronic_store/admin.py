@@ -12,8 +12,9 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ("id", "product", "status", "created_at")
+    list_filter = ("created_at",)
 
 
 @admin.register(Invoice)
 class InvoiceAdmin(admin.ModelAdmin):
-    list_display = ("order", "created_at")
+    list_display = ("order", "created_at", "price")
