@@ -9,6 +9,16 @@ from electronic_store.models import Order, Invoice
 
 @receiver(post_migrate)
 def create_permissions(**kwargs) -> None:
+    """
+    Створює групи користувачів і призначає їм відповідні права доступу після міграції
+
+    Права доступу визначені в словнику `permissions`, де ключі — назви груп, а значення —
+    словники моделей і списки дій, які дозволені для цих груп
+
+    :param kwargs: Додаткові аргументи сигналу post_migrate (не використовуються)
+    :return: None
+    """
+
     permissions = {
         "Касир": {
             Order: ["add", "change", "view"],

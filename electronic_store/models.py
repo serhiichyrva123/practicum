@@ -13,16 +13,36 @@ __all__ = ["Product", "Order", "Invoice"]
 
 
 class Product(models.Model):
+    """
+    Модель продукту, що містить інформацію про товар
+
+    :param name: Назва продукту
+    :param price: Ціна продукту
+    :param created_at: Дата і час створення запису
+    """
+
     name: str = models.CharField(max_length=255, verbose_name="Назва продукту")
     price: Decimal = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Ціна")
     created_at: datetime = models.DateTimeField(auto_now_add=True, verbose_name="Час створення")
 
     @property
     def has_discount(self) -> bool:
+        """
+        Перевіряє, чи продукт має знижку (відповідно то ТЗ)
+
+        :return: True, якщо продукту понад місяць та він має знижку; False — інакше
+        """
+
         return self.created_at.date() < (timezone.now().date() - relativedelta(months=1))
 
     @property
     def price_at_order(self) -> Decimal | DecimalField:
+        """
+        Обчислює ціну продукту з урахуванням знижки, якщо вона є
+
+        :return: Ціна зі знижкою 20%, якщо знижка доступна, інакше базова ціна
+        """
+
         if self.has_discount:
             return self.price * Decimal('0.80')
         return self.price
@@ -37,6 +57,14 @@ class Product(models.Model):
 
 
 class Order(models.Model):
+    """
+    Модель замовлення
+
+    :param product: Замовлений продукт
+    :param status: Статус замовлення. Можливі значення: "created", "paid", "completed"
+    :param created_at: Дата і час створення замовлення
+    """
+
     CHOICES = [("created", "Нове"), ("paid", "Оплачене"), ("completed", "Виконане")]
 
     product: Product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name="Замовлений продукт")
@@ -53,6 +81,13 @@ class Order(models.Model):
 
 
 class Invoice(models.Model):
+    """
+    Модель накладної
+
+    :param order: Замовлення, до якого належить накладна
+    :param created_at: Дата і час створення накладної
+    """
+
     order: Order = models.OneToOneField(Order, on_delete=models.CASCADE, verbose_name="Замовлення")
     created_at: datetime = models.DateTimeField(auto_now_add=True, verbose_name="Дата накладної")
 
