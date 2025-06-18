@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'unfold',
     'unfold.contrib.forms',
 
+    'rest_framework',
+    'drf_spectacular',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -145,3 +148,20 @@ ADMIN_REORDER = [
     {'app': 'contenttypes', 'models': []},
     {'app': 'sessions', 'models': []},
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Electronic Store API',
+    'DESCRIPTION': 'API для керування замовленнями в магазині техніки',
+    'VERSION': '1.0.0',
+}
+
