@@ -51,6 +51,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
+    'admin_reorder.middleware.ModelAdminReorder',
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -126,3 +129,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+UNFOLD = {
+    'ACTIVE': DEBUG,
+    'SHOW_HISTORY': True,
+    'SHOW_BACK_BUTTON': True,
+    'SITE_TITLE': 'Магазин техніки',
+    'SITE_HEADER': 'Магазин техніки'
+}
+
+
+ADMIN_REORDER = [
+    {'app': 'electronic_store', 'models': ['electronic_store.Product', 'electronic_store.Order', 'electronic_store.Invoice']},
+    {'app': 'auth', 'models': ['auth.User', 'auth.Group']},
+    {'app': 'contenttypes', 'models': []},
+    {'app': 'sessions', 'models': []},
+]
