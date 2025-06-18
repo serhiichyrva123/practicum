@@ -37,9 +37,10 @@
 1. Клонуйте репозиторій: <br>```git clone https://github.com/serhiichyrva123/practicum.git```
 2. Встановіть залежності: <br>```pip install -r requirements``` або ```poetry install```
 3. Виконайте міграції: <br>```python manage.py migrate```
-4. Завантажте фікстури та тестових користувачів: <br>```python manage.py load_fixtures```
+4. Створіть користувача-адміна: <br>```python manage.py createsuperuser```
+5. Завантажте фікстури та тестових користувачів: <br>```python manage.py load_fixtures```
 <br>```python manage.py register_test_users -p <PASSWORD>```
-5. Запустіть сервер: <br>```python manage.py runserver```
+6. Запустіть сервер: <br>```python manage.py runserver```
 
 ### Доступи:
 * Адмін-панель: https://127.0.0.1:8000/admin
