@@ -7,6 +7,8 @@ from decimal import Decimal
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+__all__ = ["Product", "Order", "Invoice"]
+
 # TODO: додати перевірку mypy?
 
 
