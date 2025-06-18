@@ -2,6 +2,7 @@
 Практикум від **Light IT Global**
 
 ![Made with Python](https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white)
+![Python ^3.10](https://img.shields.io/pypi/pyversions/django)
 ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
 
 > Демонстраційний бекенд для інтернет-магазину з використанням **Django**, **Unfold** та **Django REST Framework**.
