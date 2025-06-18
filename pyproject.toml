@@ -1,0 +1,22 @@
+[project]
+name = "practicum"
+version = "1.0.0"
+description = "Practicum for Light IT Global"
+authors = [
+    {name = "Serhii Chyrva",email = "chirva2428@gmail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django (>=5.2.3,<6.0.0)",
+    "django-unfold (>=0.60.0,<0.61.0)",
+    "django-modeladmin-reorder (>=0.3.1,<0.4.0)",
+    "mysqlclient (>=2.2.7,<3.0.0)",
+    "pillow (>=11.2.1,<12.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
